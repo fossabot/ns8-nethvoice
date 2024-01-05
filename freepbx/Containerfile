@@ -280,6 +280,8 @@ RUN apt-get update && apt-get install -y \
 	zip \
 	vim
 
+RUN apt-get --no-install-recommends -y install xinetd
+
 RUN pip install mysql.connector
 
 # Use PHP development ini configuration and enable logging on syslog
