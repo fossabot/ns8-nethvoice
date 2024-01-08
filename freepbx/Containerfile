@@ -280,8 +280,6 @@ RUN apt-get update && apt-get install -y \
 	zip \
 	vim
 
-RUN apt-get --no-install-recommends -y install xinetd
-
 RUN pip install mysql.connector
 
 # Use PHP development ini configuration and enable logging on syslog
@@ -332,6 +330,19 @@ RUN apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/dpkg/
 # Install centralized phonebook update script
 RUN mkdir -p /usr/share/phonebooks/ && \
 	curl -L https://github.com/nethesis/nethserver-phonebook-mysql/archive/refs/heads/ns8.tar.gz -o - | tar xzp --strip-component=5 -C /usr/share/phonebooks/ nethserver-phonebook-mysql-ns8/root/usr/share/phonebooks
+
+# Install fastagi server
+#TODO: fix permissions on /var/lib/asterisk/agi-bin
+RUN mkdir  -p /var/lib/asterisk/ && \
+	curl -L https://github.com/simplesunny/Asterisk-FastAGI/archive/785e8ac48505b4dafc2cb62e2f96f1f7a0dfeb47.tar.gz -o - | \
+	tar xzp --strip-component=1 \
+		--mode 777 \
+		--mode-C /tmp/1/var/lib/asterisk/ \
+		Asterisk-FastAGI-785e8ac48505b4dafc2cb62e2f96f1f7a0dfeb47/agi-bin/
+RUN apt-get --no-install-recommends -y install xinetd
+COPY etc/xinetd.d/fastagi /etc/xinetd.d/fastagi
+RUN echo "fastagi 4573/tcp" >> /etc/services
+
 
 COPY etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf
 COPY entrypoint.sh /entrypoint
