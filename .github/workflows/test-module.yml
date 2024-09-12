@@ -25,4 +25,3 @@ jobs:
     secrets:
       do_token: ${{ secrets.do_token }}
       #gh_status_pat: ${{ secrets.gh_status_pat }}
-      gh_status_pat: ${{ github.token }}
