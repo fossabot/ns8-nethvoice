@@ -10,12 +10,13 @@
         "Europe/Berlin",
         "Europe/Brussels",
         "Europe/London"
-      ]
+      ],
+      "default_timezone": "Europe/Rome"
     }
   ],
   "type": "object",
   "additionalProperties": false,
-  "required": ["accepted_timezone_list"],
+  "required": ["accepted_timezone_list", "default_timezone"],
   "properties": {
     "accepted_timezone_list": {
       "description": "List of accepted timezones",
@@ -23,6 +24,10 @@
       "items": {
         "type": "string"
       }
+    },
+    "default_timezone": {
+      "description": "Current timezone of the node",
+      "type": "string"
     }
   }
 }
