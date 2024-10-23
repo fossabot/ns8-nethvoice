@@ -62,6 +62,25 @@ Test the module using the `test-module.sh` script:
 
 The tests are made using [Robot Framework](https://robotframework.org/)
 
+## get-defaults Action
+
+The `get-defaults` action retrieves the default configuration values for NethVoice. It includes the following fields:
+
+- `accepted_timezone_list`: List of accepted timezones.
+- `default_timezone`: Current timezone of the node.
+
+Example output schema:
+```json
+{
+  "accepted_timezone_list": [
+    "Europe/Amsterdam",
+    "Europe/Berlin",
+    "Europe/Brussels",
+    "Europe/London"
+  ],
+  "default_timezone": "Europe/Rome"
+}
+```
 
 ## Music
 

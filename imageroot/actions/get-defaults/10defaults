@@ -14,8 +14,13 @@ command = "find *  -type f -or -type l"
 # Get the list of timezones
 accepted_timezone_list = subprocess.check_output(command, cwd=timezones_directory, text=True, shell=True).splitlines()
 
+# Retrieve the current timezone of the node
+current_timezone_command = "timedatectl show -p Timezone --value"
+default_timezone = subprocess.check_output(current_timezone_command, text=True, shell=True).strip()
+
 config={
         "accepted_timezone_list": accepted_timezone_list,
+        "default_timezone": default_timezone,
         }
 
 json.dump(config, fp=sys.stdout)
