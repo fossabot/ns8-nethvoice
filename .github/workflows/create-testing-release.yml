@@ -5,7 +5,7 @@ on:
     types: [closed]
 
 env:
-  REPO: ${{ github.repository }}
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   release-module:
