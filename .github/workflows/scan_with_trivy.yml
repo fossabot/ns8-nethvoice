@@ -1,0 +1,17 @@
+name: Scan with Trivy
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Publish images"]
+    types: [completed]
+
+jobs:
+  module:
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event.workflow_run.conclusion == '' }}
+    uses: NethServer/ns8-github-actions/.github/workflows/module-info.yml@trivy
+  run_tests:
+    needs: module
+    uses: NethServer/ns8-github-actions/.github/workflows/analyze-images.yml@trivy
+    with:
+      images: ${{needs.module.outputs.images}}
