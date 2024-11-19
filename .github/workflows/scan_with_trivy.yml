@@ -14,4 +14,4 @@ jobs:
     needs: module
     uses: NethServer/ns8-github-actions/.github/workflows/analyze-images.yml@trivy
     with:
-      images: '["ghcr.io/amygos/nethvoice-mariadb:main"]'
+      images: '${{ needs.module.outputs.images }}'
