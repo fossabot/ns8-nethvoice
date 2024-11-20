@@ -1,4 +1,4 @@
-name: Scan with Trivy
+name: Analyze module
 
 on:
   workflow_dispatch:
@@ -8,10 +8,12 @@ on:
 
 jobs:
   module:
+    name: Gather module info
     if: ${{ github.event.workflow_run.conclusion == 'success' || github.event.workflow_run.conclusion == '' }}
     uses: NethServer/ns8-github-actions/.github/workflows/module-info.yml@trivy
-  run_tests:
+  trivy_scan:
+    name: Scan images with Trivy
     needs: module
-    uses: NethServer/ns8-github-actions/.github/workflows/analyze-images.yml@trivy
+    uses: NethServer/ns8-github-actions/.github/workflows/scan-with-trivy.yml@trivy
     with:
       images: ${{ needs.module.outputs.images }}
