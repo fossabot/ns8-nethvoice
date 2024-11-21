@@ -20,7 +20,7 @@ jobs:
       severity: "HIGH,CRITICAL"
   gh-attestation:
     needs: module
-    uses: NethServer/ns8-github-actions/.github/workflows/attest-module@trivy
+    uses: NethServer/ns8-github-actions/.github/workflows/attest-module.yml@trivy
     with:
       images: ${{ needs.module.outputs.images }}
       owner: ${{ needs.module.outputs.owner }}
