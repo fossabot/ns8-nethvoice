@@ -14,7 +14,7 @@ jobs:
   trivy_scan:
     #name: Scan images with Trivy
     needs: module
-    if: ${{ needs.module.outputs.release == 'stable' || needs.module.outputs.release == 'latest' }}
+    if: ${{ needs.module.outputs.release == 'stable' || needs.module.outputs.release == 'latest' || github.event.workflow_dispatch }}
     uses: NethServer/ns8-github-actions/.github/workflows/scan-with-trivy.yml@trivy
     with:
       images: ${{ needs.module.outputs.images }}
