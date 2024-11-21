@@ -18,3 +18,9 @@ jobs:
     with:
       images: ${{ needs.module.outputs.images }}
       severity: "HIGH,CRITICAL"
+  gh-attestation:
+    needs: module
+    uses: NethServer/ns8-github-actions/.github/workflows/attest-module@trivy
+    with:
+      images: ${{ needs.module.outputs.images }}
+      owner: ${{ needs.module.outputs.owner }}
