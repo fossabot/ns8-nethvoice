@@ -1,4 +1,6 @@
 # NethVoice
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FAmygos%2Fns8-nethvoice.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FAmygos%2Fns8-nethvoice?ref=badge_shield)
+
 
 NethVoice porting to NethServer 8
 
@@ -76,3 +78,7 @@ This project incorporates a number of royalty-free, creative commons licensed mu
 * [manolo_camp-morning_coffee] - Manolo Camp, beatbastard@gmx.net
 
 * [reno_project-system] - Reno Project, renoproject@hotmail.com
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FAmygos%2Fns8-nethvoice.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FAmygos%2Fns8-nethvoice?ref=badge_large)
